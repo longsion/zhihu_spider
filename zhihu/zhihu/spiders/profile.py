@@ -43,7 +43,7 @@ class ZhihuSipder(CrawlSpider):
             meta={'cookiejar': response.meta['cookiejar']},
             formdata={
                 '_xsrf': self.xsrf,
-                'email': 'longsion',
+                'email': 'taihechenxianglong@yeah.net',
                 'password': 'chenxianglong',
                 'remember_me': 'true'},
             callback=self.after_login
