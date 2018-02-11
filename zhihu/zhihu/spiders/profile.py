@@ -79,7 +79,7 @@ class ZhihuSipder(CrawlSpider):
         # gender
         gender = selector.xpath(
             '//div[@class="ProfileHeader-iconWrapper"][2]/*[name()="svg"]/@class').extract_first()
-        print nickname, zhihu_id, bussiness
+        print nickname, zhihu_id, bussiness, education, gender
 
 
 
