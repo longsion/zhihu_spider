@@ -36,9 +36,7 @@ class ZhihuSipder(CrawlSpider):
         """
         解析登陆页面，发送登陆表单
         """
-        self.xsrf = Selector(response).xpath(
-            '//input[@name="_xsrf"]/@value'
-        ).extract()[0]
+        self.xsrf = re.search('_xsrf=([a-z0-9\-]*);.*', str(response.headers)).group(1)
         return [FormRequest(
             'https://www.zhihu.com/login/email',
             method='POST',
