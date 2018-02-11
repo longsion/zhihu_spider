@@ -65,6 +65,29 @@ class ZhihuSipder(CrawlSpider):
         解析用户主页
         """
         selector = Selector(response)
+        # nickname
+        nickname = selector.xpath(
+            '//span[@class="ProfileHeader-name"]/text()').extract_first()
+        # zhihu_id
+        zhihu_id=os.path.split(response.url)[-1]
+        # bussiness
+        bussiness = selector.xpath(
+            '//div[@class="ProfileHeader-infoItem"][2]/text()').extract_first()
+        #education
+        education = selector.xpath(
+            '//div[@class="ProfileHeader-infoItem"][1]/text()').extract_first()
+        # gender
+        gender = selector.xpath(
+            '//div[@class="ProfileHeader-iconWrapper"][2]/*[name()="svg"]/@class').extract_first()
+        print nickname, zhihu_id, bussiness
+
+
+
+    def parse_people_xx(self, response):
+        """
+        解析用户主页
+        """
+        selector = Selector(response)
         nickname=selector.xpath(
             '//div[@class="title-section ellipsis"]/span[@class="name"]/text()'
         ).extract_first()
